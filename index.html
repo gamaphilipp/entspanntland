@@ -1,0 +1,321 @@
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Entspanntland</title>
+    <link rel="stylesheet" href="style.css?v=status-panel-removed-20260705-1" />
+  </head>
+  <body>
+    <section class="start-screen" id="startScreen" aria-labelledby="startTitle">
+      <div class="start-panel">
+        <p class="brand-mark" aria-hidden="true"></p>
+        <h1 id="startTitle">Entspanntland</h1>
+        <p class="start-copy">Eine Ruheinsel, die hörbar wird, wenn es still genug ist.</p>
+        <p class="privacy-summary">
+          Die Mikrofonmessung bleibt lokal in diesem Browser. Es wird kein Ton aufgenommen, gespeichert oder an einen Server
+          übertragen. Aus dem Mikrofonsignal wird nur ein grober Lärmwert berechnet.
+        </p>
+        <p class="start-feedback" id="startFeedback" role="status"></p>
+        <div class="start-actions">
+          <button class="primary-button" type="button" id="startTestButton">Ohne Mikrofon testen</button>
+          <button class="secondary-button" type="button" id="startMicButton">Mit Mikrofon starten</button>
+          <button class="text-button" type="button" id="privacyButton">Datenschutz anzeigen</button>
+        </div>
+      </div>
+    </section>
+
+    <main class="island-screen is-hidden" id="islandScreen">
+      <header class="app-header">
+        <div>
+          <h1>Entspanntland</h1>
+          <p>Eine Ruheinsel, die hörbar wird, wenn es still genug ist.</p>
+        </div>
+        <button class="add-discovery-button" type="button" id="addDiscoveryButton">Entdeckungen hinzufügen</button>
+        <button class="settings-button" type="button" id="settingsButton">Einstellungen</button>
+      </header>
+
+      <section class="quiet-overview" aria-label="Ruhe und Lauschzeit">
+        <div class="loudness-panel">
+          <span class="meta-label">Lautstärke</span>
+          <strong id="loudnessLevelLabel">Pausiert</strong>
+          <div
+            class="loudness-meter"
+            role="meter"
+            aria-label="Lautstärke Orientierung"
+            aria-valuemin="0"
+            aria-valuemax="100"
+            aria-valuenow="0"
+            id="loudnessMeter"
+          >
+            <span class="loudness-fill" id="loudnessFill"></span>
+            <span class="loudness-marker" id="loudnessMarker"></span>
+          </div>
+          <div class="loudness-scale" aria-hidden="true">
+            <span>leise</span>
+            <span>laut</span>
+          </div>
+        </div>
+        <div class="time-panel">
+          <span class="meta-label">Lauschzeit</span>
+          <strong id="currentQuietTime">00:00</strong>
+          <small>gesamt <span id="totalQuietTime">00:00</span></small>
+        </div>
+      </section>
+
+      <section class="map-stage" aria-label="Inselkarte">
+        <div class="island-map" id="islandMap">
+          <button
+            class="discovery-location orgelfels"
+            type="button"
+            data-discovery-id="orgelfels"
+            data-modal-id="orgelfelsModal"
+            disabled
+          >
+            <span class="location-visual" aria-hidden="true">
+              <img class="location-image" alt="" />
+            </span>
+            <span class="location-label">Orgelstein</span>
+          </button>
+
+          <button
+            class="discovery-location wiesenstreicher"
+            type="button"
+            data-discovery-id="wiesenstreicher"
+            data-modal-id="wiesenstreicherModal"
+            disabled
+          >
+            <span class="location-visual" aria-hidden="true">
+              <img class="location-image" alt="" />
+            </span>
+            <span class="location-label">Wiesenstreicher</span>
+          </button>
+
+          <button
+            class="discovery-location schilffloeter"
+            type="button"
+            data-discovery-id="schilffloeter"
+            data-modal-id="schilffloeterModal"
+            disabled
+          >
+            <span class="location-visual" aria-hidden="true">
+              <img class="location-image" alt="" />
+            </span>
+            <span class="location-label">Schilfflöter</span>
+          </button>
+
+          <button
+            class="discovery-location gischtpauke"
+            type="button"
+            data-discovery-id="gischtpauke"
+            data-modal-id="gischtpaukeModal"
+            disabled
+          >
+            <span class="location-visual" aria-hidden="true">
+              <img class="location-image" alt="" />
+            </span>
+            <span class="location-label">Gischtpauke</span>
+          </button>
+
+          <button
+            class="discovery-location zwitscherchor"
+            type="button"
+            data-discovery-id="zwitscherchor"
+            data-modal-id="zwitscherchorModal"
+            disabled
+          >
+            <span class="location-visual" aria-hidden="true">
+              <img class="location-image" alt="" />
+            </span>
+            <span class="location-label">Zwitscherchor</span>
+          </button>
+        </div>
+      </section>
+    </main>
+
+    <dialog class="app-dialog settings-dialog" id="settingsModal" aria-labelledby="settingsTitle">
+      <div class="dialog-content">
+        <div class="dialog-header">
+          <h2 id="settingsTitle">Einstellungen</h2>
+          <button class="icon-close" type="button" data-close-dialog="settingsModal" aria-label="Einstellungen schließen"></button>
+        </div>
+
+        <section class="room-settings" aria-labelledby="roomSettingsTitle">
+          <h3 id="roomSettingsTitle">Raumeinstellungen</h3>
+          <fieldset>
+            <legend>Raumtyp auswählen</legend>
+            <div class="segmented-options">
+              <label class="segmented-option">
+                <input type="radio" name="roomType" value="rest" checked />
+                <span>Ruheraum</span>
+              </label>
+              <label class="segmented-option">
+                <input type="radio" name="roomType" value="learning" />
+                <span>Lernzeit</span>
+              </label>
+            </div>
+          </fieldset>
+
+          <fieldset id="workModeGroup" hidden>
+            <legend>Arbeitsform</legend>
+            <div class="segmented-options">
+              <label class="segmented-option">
+                <input type="radio" name="workMode" value="solo" checked />
+                <span>Einzelarbeit</span>
+              </label>
+              <label class="segmented-option">
+                <input type="radio" name="workMode" value="group" />
+                <span>Gruppenarbeit</span>
+              </label>
+            </div>
+          </fieldset>
+
+          <fieldset>
+            <legend>Fenster</legend>
+            <div class="segmented-options">
+              <label class="segmented-option">
+                <input type="radio" name="windowState" value="closed" checked />
+                <span>Fenster geschlossen</span>
+              </label>
+              <label class="segmented-option">
+                <input type="radio" name="windowState" value="open" />
+                <span>Fenster offen</span>
+              </label>
+            </div>
+          </fieldset>
+        </section>
+
+        <div class="debug-actions" aria-label="Teststeuerung" hidden inert>
+          <button type="button" data-state="calm">Ruhig</button>
+          <button type="button" data-state="warning">Unruhig</button>
+          <button type="button" data-state="too_loud">Zu laut</button>
+          <button type="button" data-state="paused">Pausiert</button>
+          <button type="button" data-add-quiet="60">+1 Minute Ruhe</button>
+          <button type="button" data-add-quiet="300">+5 Minuten Ruhe</button>
+          <button type="button" data-add-quiet="1200">+20 Minuten Ruhe</button>
+          <button type="button" data-add-quiet="2100">+35 Minuten Ruhe</button>
+          <button type="button" data-add-quiet="3000">+50 Minuten Ruhe</button>
+          <button type="button" data-add-quiet="3900">+65 Minuten Ruhe</button>
+          <button type="button" data-add-quiet="4800">+80 Minuten Ruhe</button>
+          <button class="reset-button" type="button" id="resetButton">Testdaten zurücksetzen</button>
+        </div>
+      </div>
+    </dialog>
+
+    <dialog class="app-dialog custom-discovery-dialog" id="customDiscoveryModal" aria-labelledby="customDiscoveryTitle">
+      <div class="dialog-content">
+        <div class="dialog-header">
+          <h2 id="customDiscoveryTitle">Entdeckung hinzufügen</h2>
+          <button
+            class="icon-close"
+            type="button"
+            data-close-dialog="customDiscoveryModal"
+            aria-label="Entdeckung schließen"
+          ></button>
+        </div>
+
+        <form class="custom-discovery-form" id="customDiscoveryForm">
+          <label class="form-field" for="customDiscoveryMinutes">
+            <span>Ruhige Zeit</span>
+            <div class="time-entry">
+              <input id="customDiscoveryMinutes" name="customDiscoveryMinutes" type="number" min="1" max="480" step="1" value="5" required />
+              <span>Minuten</span>
+            </div>
+          </label>
+
+          <label class="form-field" for="customDiscoveryDescription">
+            <span>Beschreibung</span>
+            <textarea
+              id="customDiscoveryDescription"
+              name="customDiscoveryDescription"
+              maxlength="160"
+              rows="3"
+              placeholder="5 Minuten Musik hören"
+              required
+            ></textarea>
+          </label>
+
+          <p class="form-feedback" id="customDiscoveryFeedback" role="status"></p>
+          <button class="primary-button" type="submit">Entdeckung speichern</button>
+        </form>
+
+        <section class="custom-discovery-list" aria-labelledby="customDiscoveryListTitle">
+          <h3 id="customDiscoveryListTitle">Eigene Entdeckungen</h3>
+          <p class="empty-custom-discoveries" id="customDiscoveryEmpty">Noch keine eigenen Entdeckungen.</p>
+          <ul id="customDiscoveryList"></ul>
+        </section>
+      </div>
+    </dialog>
+
+    <dialog
+      class="app-dialog custom-unlocked-dialog"
+      id="customDiscoveryUnlockedModal"
+      aria-labelledby="customDiscoveryUnlockedTitle"
+    >
+      <div class="dialog-content">
+        <div class="dialog-header">
+          <h2 id="customDiscoveryUnlockedTitle">Entdeckung freigeschaltet</h2>
+          <button
+            class="icon-close"
+            type="button"
+            data-close-dialog="customDiscoveryUnlockedModal"
+            aria-label="Entdeckung schließen"
+          ></button>
+        </div>
+        <p class="custom-unlocked-text" id="customDiscoveryUnlockedDescription"></p>
+        <button class="primary-button" type="button" data-close-dialog="customDiscoveryUnlockedModal">Zurück zur Insel</button>
+      </div>
+    </dialog>
+
+    <dialog class="app-dialog privacy-dialog" id="privacyModal" aria-labelledby="privacyTitle">
+      <div class="dialog-content">
+        <div class="dialog-header">
+          <h2 id="privacyTitle">Datenschutz</h2>
+          <button class="icon-close" type="button" data-close-dialog="privacyModal" aria-label="Datenschutz schließen"></button>
+        </div>
+        <p>
+          Die Mikrofonmessung bleibt lokal in diesem Browser. Es wird kein Ton aufgenommen, gespeichert oder an einen Server
+          übertragen. Aus dem Mikrofonsignal wird nur ein grober Lärmwert berechnet.
+        </p>
+        <button class="primary-button" type="button" data-close-dialog="privacyModal">Verstanden</button>
+      </div>
+    </dialog>
+
+    <dialog class="app-dialog discovery-dialog popup-dialog" id="orgelfelsModal" aria-label="Orgelstein">
+      <div class="popup-shell">
+        <img class="popup-image" src="design/Felsorgel/Orgelstein_popup.png" alt="Entdeckt: Orgelstein" />
+        <button class="popup-close" type="button" data-close-dialog="orgelfelsModal" aria-label="Zurück zur Insel"></button>
+      </div>
+    </dialog>
+
+    <dialog class="app-dialog discovery-dialog popup-dialog" id="wiesenstreicherModal" aria-label="Wiesenstreicher">
+      <div class="popup-shell">
+        <img class="popup-image" src="design/Wiesenstreicher/Wiesenstreicher_popup.png" alt="Entdeckt: Wiesenstreicher" />
+        <button class="popup-close" type="button" data-close-dialog="wiesenstreicherModal" aria-label="Zurück zur Insel"></button>
+      </div>
+    </dialog>
+
+    <dialog class="app-dialog discovery-dialog popup-dialog" id="schilffloeterModal" aria-label="Schilfflöter">
+      <div class="popup-shell">
+        <img class="popup-image" src="design/Schilffloeter/Schilffloeter_popup.png" alt="Entdeckt: Schilfflöter" />
+        <button class="popup-close" type="button" data-close-dialog="schilffloeterModal" aria-label="Zurück zur Insel"></button>
+      </div>
+    </dialog>
+
+    <dialog class="app-dialog discovery-dialog popup-dialog" id="gischtpaukeModal" aria-label="Gischtpauke">
+      <div class="popup-shell">
+        <img class="popup-image" src="design/Gischtpauke/Gischtpauke_popup.png" alt="Entdeckt: Gischtpauke" />
+        <button class="popup-close" type="button" data-close-dialog="gischtpaukeModal" aria-label="Zurück zur Insel"></button>
+      </div>
+    </dialog>
+
+    <dialog class="app-dialog discovery-dialog popup-dialog" id="zwitscherchorModal" aria-label="Zwitscherchor">
+      <div class="popup-shell">
+        <img class="popup-image" src="design/Zwitscherchor/Zwitscherchor_popup.png" alt="Entdeckt: Zwitscherchor" />
+        <button class="popup-close" type="button" data-close-dialog="zwitscherchorModal" aria-label="Zurück zur Insel"></button>
+      </div>
+    </dialog>
+
+    <script type="module" src="src/main.js?v=status-panel-removed-20260705-1"></script>
+  </body>
+</html>

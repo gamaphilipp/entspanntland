@@ -1,0 +1,16 @@
+.DS_Store
+**/.DS_Store
+
+# Local secrets and machine-specific files
+API
+.env
+.env.*
+**/metadata.json
+
+# Tooling output
+node_modules/
+test-results/
+playwright-report/
+coverage/
+*.log
+
