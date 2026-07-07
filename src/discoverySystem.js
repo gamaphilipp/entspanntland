@@ -1,4 +1,4 @@
-import { gameState } from "./gameState.js?v=status-panel-removed-20260705-1";
+import { gameState } from "./gameState.js?v=settings-fix-20260707-1";
 
 function getAllDiscoveries(state = gameState) {
   return [...Object.values(state.discoveries), ...(state.customDiscoveries ?? [])];

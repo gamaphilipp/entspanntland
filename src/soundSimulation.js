@@ -1,6 +1,6 @@
-import { gameState } from "./gameState.js?v=status-panel-removed-20260705-1";
-import { soundStates } from "./assets.js?v=status-panel-removed-20260705-1";
-import { resetDiscoveries, updateDiscoveries } from "./discoverySystem.js?v=status-panel-removed-20260705-1";
+import { gameState } from "./gameState.js?v=settings-fix-20260707-1";
+import { soundStates } from "./assets.js?v=settings-fix-20260707-1";
+import { resetDiscoveries, updateDiscoveries } from "./discoverySystem.js?v=settings-fix-20260707-1";
 
 const VALID_SOUND_STATES = new Set(["calm", "warning", "too_loud", "paused"]);
 const MICROPHONE_LEVEL_SMOOTHING = 0.78;

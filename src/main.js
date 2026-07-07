@@ -1,4 +1,4 @@
-import { gameState } from "./gameState.js?v=collection-20260707-1";
+import { gameState } from "./gameState.js?v=settings-fix-20260707-1";
 import {
   setTickHandler,
   setRoomSettings,
@@ -7,15 +7,15 @@ import {
   addQuietSeconds,
   resetSimulation,
   requestMicrophoneAccess,
-} from "./soundSimulation.js?v=collection-20260707-1";
-import { addCustomDiscovery, updateDiscoveries } from "./discoverySystem.js?v=collection-20260707-1";
+} from "./soundSimulation.js?v=settings-fix-20260707-1";
+import { addCustomDiscovery, updateDiscoveries } from "./discoverySystem.js?v=settings-fix-20260707-1";
 import {
   closeDialogById,
   formatTime,
   setupMapView,
   updateMapView,
   updateTextState,
-} from "./mapView.js?v=collection-20260707-1";
+} from "./mapView.js?v=settings-fix-20260707-1";
 
 const elements = {
   startScreen: document.getElementById("startScreen"),

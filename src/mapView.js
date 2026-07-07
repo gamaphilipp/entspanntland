@@ -1,5 +1,5 @@
-import { discoveryContent, soundStates } from "./assets.js?v=status-panel-removed-20260705-1";
-import { gameState } from "./gameState.js?v=status-panel-removed-20260705-1";
+import { discoveryContent, soundStates } from "./assets.js?v=settings-fix-20260707-1";
+import { gameState } from "./gameState.js?v=settings-fix-20260707-1";
 
 const discoveryAnimationTimers = new Map();
 const pendingDiscoveryAnimationIds = new Set();
