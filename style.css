@@ -234,8 +234,8 @@ p {
   text-align: center;
   width: min(100%, 1180px);
   margin: 0 auto;
-  min-height: 168px;
-  padding: 44px 190px 42px;
+  min-height: 154px;
+  padding: 52px 190px;
   border: 0;
   border-radius: 0;
   background: var(--ui-panel-wide) center / 100% 100% no-repeat;
@@ -243,6 +243,7 @@ p {
 }
 
 .app-header h1 {
+  margin: 0;
   font-size: clamp(2rem, 3.6vw, 3.65rem);
 }
 
@@ -302,6 +303,17 @@ p {
   filter: drop-shadow(0 12px 22px rgba(24, 26, 14, 0.18));
 }
 
+.loudness-panel {
+  text-align: center;
+}
+
+.time-panel {
+  display: grid;
+  place-items: center;
+  align-content: center;
+  text-align: center;
+}
+
 .loudness-panel strong,
 .time-panel strong {
   display: block;
@@ -320,6 +332,7 @@ p {
   font-size: 0.78rem;
   font-weight: 700;
   letter-spacing: 0;
+  text-align: center;
   text-transform: uppercase;
 }
 
