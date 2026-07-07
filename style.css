@@ -158,6 +158,7 @@ p {
 
 .primary-button,
 .secondary-button,
+.collection-button,
 .add-discovery-button,
 .settings-button,
 .debug-actions button,
@@ -177,6 +178,7 @@ p {
 }
 
 .primary-button,
+.collection-button,
 .add-discovery-button,
 .settings-button {
   background: var(--ui-button-green) center / 100% 100% no-repeat;
@@ -201,6 +203,7 @@ p {
 
 .primary-button:hover,
 .secondary-button:hover,
+.collection-button:hover,
 .add-discovery-button:hover,
 .settings-button:hover,
 .debug-actions button:hover,
@@ -255,20 +258,28 @@ p {
   transform: translateY(-50%);
 }
 
-.add-discovery-button {
+.header-side-actions {
   position: absolute;
   top: 50%;
   left: 48px;
-  min-width: 218px;
+  display: grid;
+  gap: 8px;
+  width: 222px;
   transform: translateY(-50%);
+}
+
+.collection-button,
+.add-discovery-button {
+  min-width: 218px;
 }
 
 .app-header .settings-button:hover {
   transform: translateY(calc(-50% - 1px));
 }
 
+.app-header .collection-button:hover,
 .app-header .add-discovery-button:hover {
-  transform: translateY(calc(-50% - 1px));
+  transform: translateY(-1px);
 }
 
 .quiet-overview {
@@ -615,10 +626,22 @@ p {
   max-height: min(900px, calc(100vh - 30px));
 }
 
+.collection-dialog,
 .custom-discovery-dialog,
 .custom-unlocked-dialog {
   width: min(880px, calc(100% - 30px));
   max-height: min(900px, calc(100vh - 30px));
+}
+
+.collection-dialog {
+  width: min(980px, calc(100% - 30px));
+}
+
+.collection-dialog .dialog-content {
+  padding:
+    clamp(104px, 8vw, 116px)
+    clamp(72px, 8vw, 104px)
+    clamp(106px, 9vw, 124px);
 }
 
 .custom-discovery-dialog .dialog-content {
@@ -650,6 +673,7 @@ p {
   text-align: center;
 }
 
+.collection-dialog .dialog-header,
 .custom-discovery-dialog .dialog-header,
 .custom-unlocked-dialog .dialog-header {
   justify-content: center;
@@ -690,6 +714,7 @@ p {
   transform: none;
 }
 
+.collection-dialog .icon-close,
 .custom-discovery-dialog .icon-close,
 .custom-unlocked-dialog .icon-close {
   position: absolute;
@@ -833,10 +858,127 @@ p {
 
 .discovery-dialog p,
 .privacy-dialog p,
+.exercise-script p,
 .custom-unlocked-text {
   color: var(--muted);
   font-size: 1rem;
   line-height: 1.65;
+}
+
+.exercise-collection {
+  display: grid;
+  grid-template-columns: minmax(190px, 230px) minmax(0, 1fr);
+  gap: 16px;
+  align-items: start;
+  width: min(100%, 720px);
+  margin: 0 auto;
+}
+
+.exercise-list {
+  display: grid;
+  gap: 10px;
+  min-width: 0;
+}
+
+.exercise-card {
+  display: grid;
+  gap: 3px;
+  width: 100%;
+  min-height: 82px;
+  padding: 16px 18px;
+  border: 0;
+  border-radius: 0;
+  background: var(--ui-button-parchment) center / 100% 100% no-repeat;
+  color: var(--ink);
+  cursor: pointer;
+  filter: drop-shadow(0 5px 8px rgba(47, 35, 14, 0.16));
+  font-family: var(--label-font);
+  text-align: left;
+  transition:
+    transform 180ms ease,
+    filter 180ms ease;
+}
+
+.exercise-card span {
+  color: var(--moss-dark);
+  font-size: 0.78rem;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.exercise-card strong {
+  color: var(--ink);
+  font-size: 1rem;
+  line-height: 1.18;
+}
+
+.exercise-card.is-active {
+  background-image: var(--ui-button-green);
+}
+
+.exercise-card.is-active span,
+.exercise-card.is-active strong {
+  color: #fff4cb;
+  text-shadow: 0 1px 0 rgba(24, 23, 12, 0.42);
+}
+
+.exercise-card:hover {
+  transform: translateY(-1px);
+  filter: drop-shadow(0 7px 10px rgba(47, 35, 14, 0.2));
+}
+
+.exercise-card:focus-visible {
+  outline: 3px solid rgba(255, 246, 190, 0.9);
+  outline-offset: 2px;
+}
+
+.exercise-detail {
+  min-width: 0;
+  max-height: min(520px, calc(100vh - 340px));
+  overflow: auto;
+  padding: 24px 28px;
+  border: 2px solid rgba(92, 55, 22, 0.22);
+  border-radius: 8px;
+  background: rgba(255, 242, 198, 0.54);
+  box-shadow:
+    inset 0 2px 8px rgba(75, 49, 22, 0.12),
+    0 1px 0 rgba(255, 248, 217, 0.55);
+}
+
+.exercise-detail[hidden] {
+  display: none !important;
+}
+
+.exercise-kicker {
+  margin: 0 0 4px;
+  color: var(--moss-dark);
+  font-family: var(--label-font);
+  font-size: 0.78rem;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.exercise-detail h3 {
+  margin: 0 0 18px;
+  color: var(--ink);
+  font-family: var(--display-font);
+  font-size: clamp(1.32rem, 2.4vw, 1.95rem);
+  line-height: 1.16;
+  text-shadow: 0 1px 0 rgba(255, 238, 184, 0.55);
+}
+
+.exercise-script {
+  display: grid;
+  gap: 12px;
+}
+
+.exercise-script p {
+  margin: 0;
+  color: var(--ink);
+}
+
+.exercise-script strong {
+  color: var(--accent-strong);
 }
 
 .custom-discovery-form {
@@ -1542,14 +1684,26 @@ p {
     font-size: 0.95rem;
   }
 
-  .add-discovery-button,
-  .settings-button {
+  .header-side-actions {
     position: static;
+    display: grid;
+    gap: 8px;
     justify-self: center;
     width: min(100%, 260px);
     transform: none;
   }
 
+  .collection-button,
+  .add-discovery-button,
+  .settings-button {
+    position: static;
+    justify-self: center;
+    width: min(100%, 260px);
+    min-width: 0;
+    transform: none;
+  }
+
+  .app-header .collection-button:hover,
   .app-header .add-discovery-button:hover,
   .app-header .settings-button:hover {
     transform: translateY(-1px);
@@ -1560,11 +1714,22 @@ p {
     padding: 22px 24px;
   }
 
+  .collection-dialog .dialog-content,
   .custom-discovery-dialog .dialog-content {
     padding:
       104px
       clamp(54px, 15vw, 68px)
       150px;
+  }
+
+  .exercise-collection {
+    grid-template-columns: 1fr;
+    width: min(100%, 560px);
+  }
+
+  .exercise-detail {
+    max-height: clamp(250px, calc(100vh - 460px), 360px);
+    padding: 22px 20px;
   }
 
   .segmented-options {

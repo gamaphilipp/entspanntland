@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Entspanntland</title>
-    <link rel="stylesheet" href="style.css?v=status-panel-removed-20260705-1" />
+    <link rel="stylesheet" href="style.css?v=collection-20260707-1" />
   </head>
   <body>
     <section class="start-screen" id="startScreen" aria-labelledby="startTitle">
@@ -31,7 +31,10 @@
           <h1>Entspanntland</h1>
           <p>Eine Ruheinsel, die hörbar wird, wenn es still genug ist.</p>
         </div>
-        <button class="add-discovery-button" type="button" id="addDiscoveryButton">Entdeckungen hinzufügen</button>
+        <div class="header-side-actions" aria-label="Werkzeuge">
+          <button class="collection-button" type="button" id="collectionButton">Sammlung</button>
+          <button class="add-discovery-button" type="button" id="addDiscoveryButton">Entdeckungen hinzufügen</button>
+        </div>
         <button class="settings-button" type="button" id="settingsButton">Einstellungen</button>
       </header>
 
@@ -267,6 +270,136 @@
       </div>
     </dialog>
 
+    <dialog class="app-dialog collection-dialog" id="collectionModal" aria-labelledby="collectionTitle">
+      <div class="dialog-content">
+        <div class="dialog-header">
+          <h2 id="collectionTitle">Sammlung</h2>
+          <button class="icon-close" type="button" data-close-dialog="collectionModal" aria-label="Sammlung schließen"></button>
+        </div>
+
+        <div class="exercise-collection">
+          <aside class="exercise-list" aria-label="Übungen">
+            <button
+              class="exercise-card is-active"
+              type="button"
+              data-exercise-target="fantasyJourney"
+              aria-controls="fantasyJourney"
+              aria-selected="true"
+            >
+              <span>Fantasiereise</span>
+              <strong>Ein Besuch im Entspanntland</strong>
+            </button>
+          </aside>
+
+          <article class="exercise-detail is-active" id="fantasyJourney" data-exercise-panel="fantasyJourney">
+            <p class="exercise-kicker">Fantasiereise</p>
+            <h3>Ein Besuch im Entspanntland</h3>
+            <div class="exercise-script">
+              <p>Setz dich bequem hin.</p>
+              <p>Deine Füße stehen auf dem Boden.</p>
+              <p>Deine Hände liegen locker auf deinen Beinen oder auf dem Tisch.</p>
+
+              <p>Wenn du möchtest, kannst du deine Augen schließen.</p>
+              <p>Du kannst sie aber auch offen lassen und einfach ruhig nach vorne schauen.</p>
+
+              <p>Atme langsam ein ...<br />und wieder aus.</p>
+
+              <p>Noch einmal:<br />Einatmen ...<br />und ausatmen.</p>
+
+              <p>Stell dir vor, du stehst vor einer besonderen Tür.</p>
+              <p>Auf der Tür steht: <strong>Entspanntland</strong>.</p>
+
+              <p>Diese Tür führt an einen Ort, an dem es ruhig ist.</p>
+              <p>Dort musst du nichts schaffen.</p>
+              <p>Du musst nicht schnell sein.</p>
+              <p>Du musst nichts richtig machen.</p>
+              <p>Du darfst einfach kurz Pause machen.</p>
+
+              <p>Du öffnest die Tür ganz leise und gehst hinein.</p>
+
+              <p>Vor dir liegt das Entspanntland.</p>
+              <p>
+                Vielleicht siehst du eine weiche Wiese. Vielleicht gibt es einen ruhigen Weg, kleine Hügel, Steine, Blumen
+                oder einen gemütlichen Platz zum Ausruhen.
+              </p>
+
+              <p>Du gehst langsam los.</p>
+              <p>Mit jedem Schritt wirst du ein bisschen ruhiger.</p>
+
+              <p>Du hörst vielleicht leise Geräusche:</p>
+              <p>Wind, der durch Steine weht.</p>
+              <p>Blätter, die sich bewegen.</p>
+              <p>Vögel, die singen.</p>
+              <p>Oder einfach Stille.</p>
+
+              <p>Diese Ruhe tut dir gut.</p>
+
+              <p>Jetzt findest du einen Platz, der sich sicher und angenehm anfühlt.</p>
+              <p>Vielleicht setzt du dich ins Gras.</p>
+              <p>Vielleicht lehnst du dich an einen warmen Stein.</p>
+              <p>Vielleicht legst du dich auf eine weiche Fläche.</p>
+
+              <p>Du bist im Entspanntland.</p>
+              <p>Hier darfst du einfach sein.</p>
+
+              <p>Spüre deinen Atem.</p>
+
+              <p>Einatmen ...<br />ausatmen ...</p>
+
+              <p>Beim Einatmen stellst du dir vor:<br /><strong>Ich nehme Ruhe auf.</strong></p>
+
+              <p>Beim Ausatmen stellst du dir vor:<br /><strong>Ich lasse Stress los.</strong></p>
+
+              <p>Einatmen: Ruhe.</p>
+              <p>Ausatmen: Stress loslassen.</p>
+
+              <p>Vielleicht war es heute laut.</p>
+              <p>Vielleicht war viel los.</p>
+              <p>Vielleicht hattest du viele Gedanken im Kopf.</p>
+
+              <p>Hier im Entspanntland dürfen diese Gedanken leiser werden.</p>
+              <p>Sie müssen nicht verschwinden.</p>
+              <p>Sie dürfen einfach langsam vorbeiziehen wie Wolken am Himmel.</p>
+
+              <p>Du schaust dich noch einmal um.</p>
+              <p>Was entdeckst du im Entspanntland?</p>
+              <p>Einen besonderen Stein?</p>
+              <p>Eine Pflanze?</p>
+              <p>Ein Tier?</p>
+              <p>Einen ruhigen Ort nur für dich?</p>
+
+              <p>Such dir in Gedanken eine Sache aus, die du mitnehmen möchtest.</p>
+              <p>Vielleicht ein ruhiges Gefühl.</p>
+              <p>Vielleicht ein schönes Bild.</p>
+              <p>Vielleicht einen Satz.</p>
+
+              <p>Der Satz könnte sein:</p>
+
+              <p><strong>Ich darf ruhig werden.</strong></p>
+              <p><strong>Ich bin sicher.</strong></p>
+              <p><strong>Ich kann mir eine Pause nehmen.</strong></p>
+
+              <p>Nimm dieses kleine Stück Entspanntland in deinem Herzen mit.</p>
+
+              <p>Jetzt kommst du langsam wieder zurück in den Raum.</p>
+
+              <p>Spüre deine Füße auf dem Boden.</p>
+              <p>Spüre den Stuhl oder den Boden unter dir.</p>
+              <p>Bewege langsam deine Finger.</p>
+              <p>Bewege deine Schultern ganz leicht.</p>
+
+              <p>Atme noch einmal tief ein ...<br />und wieder aus.</p>
+
+              <p>Wenn du bereit bist, öffne deine Augen.</p>
+
+              <p>Du bist wieder hier.</p>
+              <p>Und ein kleines Stück Entspanntland bleibt bei dir.</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </dialog>
+
     <dialog class="app-dialog privacy-dialog" id="privacyModal" aria-labelledby="privacyTitle">
       <div class="dialog-content">
         <div class="dialog-header">
@@ -316,6 +449,6 @@
       </div>
     </dialog>
 
-    <script type="module" src="src/main.js?v=status-panel-removed-20260705-1"></script>
+    <script type="module" src="src/main.js?v=collection-20260707-1"></script>
   </body>
 </html>

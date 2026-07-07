@@ -1,4 +1,4 @@
-import { gameState } from "./gameState.js?v=status-panel-removed-20260705-1";
+import { gameState } from "./gameState.js?v=collection-20260707-1";
 import {
   setTickHandler,
   setRoomSettings,
@@ -7,15 +7,15 @@ import {
   addQuietSeconds,
   resetSimulation,
   requestMicrophoneAccess,
-} from "./soundSimulation.js?v=status-panel-removed-20260705-1";
-import { addCustomDiscovery, updateDiscoveries } from "./discoverySystem.js?v=status-panel-removed-20260705-1";
+} from "./soundSimulation.js?v=collection-20260707-1";
+import { addCustomDiscovery, updateDiscoveries } from "./discoverySystem.js?v=collection-20260707-1";
 import {
   closeDialogById,
   formatTime,
   setupMapView,
   updateMapView,
   updateTextState,
-} from "./mapView.js?v=status-panel-removed-20260705-1";
+} from "./mapView.js?v=collection-20260707-1";
 
 const elements = {
   startScreen: document.getElementById("startScreen"),
@@ -25,6 +25,10 @@ const elements = {
   startMicButton: document.getElementById("startMicButton"),
   privacyButton: document.getElementById("privacyButton"),
   privacyModal: document.getElementById("privacyModal"),
+  collectionButton: document.getElementById("collectionButton"),
+  collectionModal: document.getElementById("collectionModal"),
+  exerciseChoiceButtons: document.querySelectorAll("[data-exercise-target]"),
+  exercisePanels: document.querySelectorAll("[data-exercise-panel]"),
   addDiscoveryButton: document.getElementById("addDiscoveryButton"),
   customDiscoveryModal: document.getElementById("customDiscoveryModal"),
   customDiscoveryForm: document.getElementById("customDiscoveryForm"),
@@ -178,6 +182,28 @@ function openDiscoveryModal(modalId) {
   openDialog(document.getElementById(modalId));
 }
 
+function showExercise(exerciseId) {
+  elements.exerciseChoiceButtons.forEach((button) => {
+    const isSelected = button.dataset.exerciseTarget === exerciseId;
+    button.classList.toggle("is-active", isSelected);
+    button.setAttribute("aria-selected", String(isSelected));
+  });
+
+  elements.exercisePanels.forEach((panel) => {
+    const isSelected = panel.dataset.exercisePanel === exerciseId;
+    panel.classList.toggle("is-active", isSelected);
+    panel.hidden = !isSelected;
+  });
+}
+
+function setupExerciseCollection() {
+  elements.exerciseChoiceButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+      showExercise(button.dataset.exerciseTarget);
+    });
+  });
+}
+
 function handleCustomDiscoverySubmit(event) {
   event.preventDefault();
 
@@ -232,6 +258,7 @@ async function startWithMicrophone() {
 setTickHandler(updateUI);
 setupMapView({ onOpenDiscovery: openDiscoveryModal });
 setRoomSettings(gameState.roomSettings);
+setupExerciseCollection();
 updateUI();
 
 elements.startTestButton.addEventListener("click", () => {
@@ -243,6 +270,11 @@ elements.startMicButton.addEventListener("click", startWithMicrophone);
 
 elements.privacyButton.addEventListener("click", () => {
   openDialog(elements.privacyModal);
+});
+
+elements.collectionButton.addEventListener("click", () => {
+  showExercise("fantasyJourney");
+  openDialog(elements.collectionModal);
 });
 
 elements.addDiscoveryButton.addEventListener("click", () => {
