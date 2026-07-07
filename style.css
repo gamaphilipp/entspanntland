@@ -695,6 +695,10 @@ p {
   text-align: center;
 }
 
+.collection-dialog .dialog-header {
+  padding-top: clamp(16px, 2.2vw, 24px);
+}
+
 .dialog-header h2 {
   margin: 0;
   color: var(--ink);
@@ -895,10 +899,10 @@ p {
 
 .exercise-card {
   display: grid;
-  gap: 3px;
   width: 100%;
-  min-height: 82px;
-  padding: 16px 18px;
+  min-height: 62px;
+  place-items: center;
+  padding: 14px 18px;
   border: 0;
   border-radius: 0;
   background: var(--ui-button-parchment) center / 100% 100% no-repeat;
@@ -906,7 +910,7 @@ p {
   cursor: pointer;
   filter: drop-shadow(0 5px 8px rgba(47, 35, 14, 0.16));
   font-family: var(--label-font);
-  text-align: left;
+  text-align: center;
   transition:
     transform 180ms ease,
     filter 180ms ease;
@@ -921,7 +925,7 @@ p {
 
 .exercise-card strong {
   color: var(--ink);
-  font-size: 1rem;
+  font-size: 1.02rem;
   line-height: 1.18;
 }
 
