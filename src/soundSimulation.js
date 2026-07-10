@@ -3,7 +3,7 @@ import { soundStates } from "./assets.js?v=settings-fix-20260707-1";
 import { resetDiscoveries, updateDiscoveries } from "./discoverySystem.js?v=settings-fix-20260707-1";
 
 const VALID_SOUND_STATES = new Set(["calm", "warning", "too_loud", "paused"]);
-const MICROPHONE_LEVEL_SMOOTHING = 0.78;
+const MICROPHONE_LEVEL_SMOOTHING = 0.82;
 const MICROPHONE_UI_INTERVAL_MS = 140;
 const DEFAULT_ROOM_SETTINGS = {
   roomType: "rest",
@@ -13,33 +13,33 @@ const DEFAULT_ROOM_SETTINGS = {
 const ROOM_PROFILES = {
   rest_closed: {
     label: "Sehr sensibel",
-    calmMax: 26,
-    tooLoudMin: 54,
+    calmMax: 30,
+    tooLoudMin: 60,
   },
   rest_open: {
     label: "Sehr sensibel, leicht tolerant",
-    calmMax: 30,
-    tooLoudMin: 58,
-  },
-  learning_solo_closed: {
-    label: "Sensibel",
     calmMax: 34,
     tooLoudMin: 64,
   },
+  learning_solo_closed: {
+    label: "Sensibel",
+    calmMax: 38,
+    tooLoudMin: 70,
+  },
   learning_solo_open: {
     label: "Sensibel, leicht tolerant",
-    calmMax: 38,
-    tooLoudMin: 68,
+    calmMax: 42,
+    tooLoudMin: 74,
   },
   learning_group_closed: {
     label: "Mittel tolerant",
-    calmMax: 46,
-    tooLoudMin: 78,
+    calmMax: 50,
+    tooLoudMin: 84,
   },
   learning_group_open: {
     label: "Am tolerantesten",
-    calmMax: 52,
-    tooLoudMin: 86,
+    calmMax: 56,
+    tooLoudMin: 92,
   },
 };
 

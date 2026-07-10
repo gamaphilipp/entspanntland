@@ -7,7 +7,7 @@ import {
   addQuietSeconds,
   resetSimulation,
   requestMicrophoneAccess,
-} from "./soundSimulation.js?v=settings-fix-20260707-1";
+} from "./soundSimulation.js?v=microphone-tolerance-20260710-1";
 import { addCustomDiscovery, updateDiscoveries } from "./discoverySystem.js?v=settings-fix-20260707-1";
 import {
   closeDialogById,
