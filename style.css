@@ -591,6 +591,9 @@ p {
 
 .popup-shell {
   position: relative;
+  display: block;
+  width: fit-content;
+  margin: 0 auto;
   line-height: 0;
 }
 
@@ -605,9 +608,9 @@ p {
 
 .popup-close {
   position: absolute;
-  top: 4.5%;
-  right: 5.1%;
-  width: 9.2%;
+  top: 1.4%;
+  right: 2.6%;
+  width: 11%;
   min-width: 40px;
   aspect-ratio: 1;
   padding: 0;
